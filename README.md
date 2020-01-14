@@ -19,7 +19,7 @@ Grensene er blir dermed ikke helt riktige, men reduserer filstørrelsen betrakte
 
 2. Installer pakkene som trengs, f.eks. i et virtual environment:
 ```bash
-virtualenv -ppython venv
+virtualenv -ppython3 venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
