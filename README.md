@@ -26,7 +26,7 @@ pip install -r requirements.txt
 
 3. Kjør så scriptet:
 ```bash
-python convert.py
+python convert.py <input-filename.geojson> <output-filename.json>
 ```
 
 4. Etter du har gjort dette kan du bruke [mapshaper.org](http://mapshaper.org) til å redusere antall koordinater og dermed filstørrelsen så det blir litt mer web-vennlig.
