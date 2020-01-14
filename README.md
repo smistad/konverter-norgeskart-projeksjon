@@ -15,7 +15,7 @@ Grensene er blir dermed ikke helt riktige, men reduserer filstørrelsen betrakte
 
 ## Bruk
 
-1. Last ned offisielle gjeldende kart fra geonorge for [kommuner](https://kartkatalog.geonorge.no/metadata/041f1e6e-bdbc-4091-b48f-8a5990f3cc5b) og [fylker](https://kartkatalog.geonorge.no/metadata/6093c8a8-fa80-11e6-bc64-92361f002671). Husk å velge hele landet, UTM-33 projeksjon og json format. Legg disse filene i samme mappe som convert.py scriptet.
+1. Last ned offisielle gjeldende kart fra geonorge for [kommuner](https://kartkatalog.geonorge.no/metadata/041f1e6e-bdbc-4091-b48f-8a5990f3cc5b) og [fylker](https://kartkatalog.geonorge.no/metadata/6093c8a8-fa80-11e6-bc64-92361f002671). Husk å velge hele landet, UTM-33 projeksjon og GeoJSON format. Legg disse filene i samme mappe som convert.py scriptet.
 
 2. Installer pakkene som trengs, f.eks. i et virtual environment:
 ```bash
