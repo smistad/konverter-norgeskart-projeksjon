@@ -12,6 +12,9 @@ De opprinnelige grensedata fra Geonorge består av veldig mange koordinater som 
 Du kan redusere antall koordinater ved å bruke [mapshaper.org](http://mapshaper.org) til å glatte ut grensene. 
 Grensene er blir dermed ikke helt riktige, men reduserer filstørrelsen betraktelig og ser riktig ut på høyt nivå.
 
+## Laste ned ferdig konverterte kart
+
+Laste ned ferdig konverterte kart fra [release siden](https://github.com/smistad/konverter-norgeskart-projeksjon/releases).
 
 ## Bruk
 
