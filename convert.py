@@ -1,6 +1,6 @@
 import pyproj
 import json
-import numpy
+import numpy as np
 from math import ceil
 import sys
 
@@ -25,10 +25,10 @@ if __name__ == "__main__":
     with open(input_file, 'r') as f:
         data = json.load(f)
 
-    if 'administrative_enheter.fylke' in data:
-        name = 'administrative_enheter.fylke'
+    if 'Fylke' in data:
+        name = 'Fylke'
     else:
-        name = 'administrative_enheter.kommune'
+        name = 'Kommune'
 
     data[name]['crs']['properties']['name'] = 'EPSG:3857'
     #traverse data in json string
@@ -40,27 +40,23 @@ if __name__ == "__main__":
         coords = feature['geometry']['coordinates']
 
         #coordList is for each individual polygon
-        newCoordLists = []
-        for coordList in coords:
-            print(len(coordList))
-            step = int(ceil(len(coordList)/coordinates_per_object))
-            newCoordList = []
-            #each point
-            counter = 0
-            for coordPair in coordList:
-                if keep_all or counter % step == 0 or counter + 1 == len(coordList):
-                    x1 = coordPair[0]
-                    y1 = coordPair[1]
-                    #do transformation
-                    x, y = pyproj.transform(source,target,x1, y1)
-                    #print(coordPair[0], coordPair[1])
-                    x, y = source(x1, y1, inverse=True)
-                    #print(x, y)
-                    newCoordList.append([x, y])
-                counter += 1
+        regions = []
+        for region in coords:
+            newCoordLists = []
+            for coordList in region:
+                print(len(coordList))
+                step = int(ceil(len(coordList)/coordinates_per_object))
+                newCoordList = []
 
-            newCoordLists.append(newCoordList)
-        feature['geometry']['coordinates'] = newCoordLists
+                array = np.array(coordList)
+                newX, newY = source(array[:,0], array[:,1], inverse=True)
+                newCoordList = np.column_stack((newX, newY))
+                #print(newCoordList.shape)
+                newCoordList = newCoordList.tolist()
+
+                newCoordLists.append(newCoordList)
+            regions.append(newCoordLists)
+        feature['geometry']['coordinates'] = regions
 
     with open(output_file, 'w') as f:
         f.write(json.dumps(data[name]))
